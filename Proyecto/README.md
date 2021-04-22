@@ -1,7 +1,7 @@
 # GRUPOB-TM
 INTEGRANTES:
 -Artola, María Emilia
--Goncalvez, Franco
+-Gozalvez, Franco
 -Piriz, Carla.
 
 TEMA ELEGIDO: "   "
