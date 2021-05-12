@@ -21,7 +21,7 @@ ALCANCE DE LA APP
 
 HERRAMIENTAS A UTILIZAR
 -LENGUAJE: Python
--IDE: visual Studio Code 
+-IDE: Pycharm Community 
 -Base de datos: MySql o MongoDB
 -Sistema operativo: LINUX
 -FrontEnd:posiblemente Django
