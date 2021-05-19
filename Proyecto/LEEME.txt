@@ -1,28 +1,41 @@
-# GRUPOB-TM
+GRUPOB-TM
+
 INTEGRANTES:
 -Artola, María Emilia
 -Gozalvez, Franco
 -Piriz, Carla.
 
-TEMA ELEGIDO: "APP WEB PARA VISUALIZAR LAS CAMAS UTI DISPONIBLES  EN LOS ESTABLEMIENTOS DEL GRAN MENDOZA "
+TEMA ELEGIDO: "Videojuego inspirado en el juego de mesa KING OF TOKYO "
 
-JUSTIFICACION DE TEMA ELEGIDO Y HERRAMIENTAS A UTILIZAR(lenguaje y entorno)
+King of Tokyo es un juego de estrategia y azar en el que todos los jugadores son monstruos que pelean entre sí para conquistar la ciudad de Tokio.
+Consiste en el lanzamiento de dados especiales, con números y figuras que sirven para curar, atacar, comprar cartas especiales o ganar puntos de victoria.
+EL ganador de la partida es quien obtenga primero 20 puntos de victoria o sea el último "monstruo" en pie. (Se comienza con 10 puntos de vida)
+Se puede jugar de 2-6 personas.
 
-Elegimos el tema debido a la necesidad actual de internaciòn que presenta la provincia de Mendoza en el contexto de pandemia producto del Covid 19 y la dificultad que tienen las personas que padecen esta enfermedad y sus familiares para conseguir una cama en un hospital.
+Reglamento del juego original completo en:
+https://www.dropbox.com/s/t0socqh3qecu6ky/Reglamento%20King%20of%20Tokyo.pdf?dl=0
 
-ALCANCE DE LA APP
--mostrar lista de hospitales/clinicas
--mostrar disponibilidad o no de camas UTI de cada uno en tiempo "real". (con actualizaciones que iran haciendo los encargados de cargar los datos de cada hospital) 
--mostrar datos de contacto del hospital y su ubicación (en el mejor de los casos en a traves de libreria de google maps)
--Pestaña para mostrar informacion referida al Covid.
--Solo tendrán usuario el administrador de la app y cada instituciòn de Salud adherida. Este usuario hospital lo utilizara cada persona encargada de actualizar los datos de su hospital.
--Los visitantes de la pagína solo podran visualizar la informaciòn, sin registrarse.
-
+ALCANCE.
+-Programar videojuego que incluye:
+   -Lógica de dados
+   -Lógica de tablero
+   -Lógica de compras de cartas
+   -Lógica de jugadores
+   -Lógica de turnos
+    ...
+-Interfaz sencilla,en primera instancia por consola.
+-Opción multiplayer Offline
+-Inteligencia Artificial para las jugadas de los bots (personajes sin jugador)
 
 HERRAMIENTAS A UTILIZAR
 -LENGUAJE: Python
--IDE: Pycharm Community 
--Base de datos: MySql o MongoDB
+-IDE: Pycharm Community
 -Sistema operativo: LINUX
--FrontEnd:posiblemente Django
+-FrontEnd: Pygame si es sin navegador o Django si se realiza para Web
 
+INVESTIGACION:
+No hay versión oficial del juego como videojuego. En GitHub se pueden encontrar algunos repositorios,
+la mayoría en otros lenguajes e idiomas y muchos están incompletos (posiblemente abandonados).
+
+REPOSITORIO DE TRABAJO:
+https://github.com/emiliaartola/GRUPOB-TM
