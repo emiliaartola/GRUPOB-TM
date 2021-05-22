@@ -41,7 +41,7 @@ class MainMenu(Menu):
         while self.run_display:
             self.game.check_events()
             self.check_input()
-            self.game.render_background("background")
+            self.game.render("background", 0, 0)
             self.game.draw_text('Main Menu', 45, self.game.DISPLAY_W / 2, self.game.DISPLAY_H - 230, self.game.BLACK)
             self.game.draw_text("Start Game", 30, self.startx, self.starty, self.game.BLACK)
             self.game.draw_text("Options", 30, self.optionsx, self.optionsy, self.game.BLACK)
@@ -131,7 +131,7 @@ class CreditsMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.render_background("credits")
+            self.game.render("credits")
             self.game.draw_text('Version digital de King of Tokyo', 35, self.game.DISPLAY_W / 2,
                                 self.game.DISPLAY_H / 2 - 20, self.game.BLACK)
             self.game.draw_text('Desarrollado por : ', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50,

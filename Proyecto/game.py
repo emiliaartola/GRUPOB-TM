@@ -1,5 +1,6 @@
 import pygame
 from menu import *
+from dice import *
 
 class Game:
     def __init__(self):
@@ -24,10 +25,9 @@ class Game:
     def game_loop(self):
         while self.playing:
             self.check_events()
-            if self.START_KEY:
-                self.playing= False
-            self.render_background("background")
-            self.render_board("Tablero")
+            self.render("background", 0, 0)
+            self.render("Tablero", 150, 150)
+            self.render_png('Cara1', 300, 300)
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
@@ -56,10 +56,9 @@ class Game:
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)
     #CAMBIO DE BACKGROUND
-    def render_background(self, name):
-        background = pygame.image.load(f'{name}.jpg').convert()
-        self.display.blit(background, (0, 0))
-    #BOARD
-    def render_board(self, name):
-        board = pygame.image.load(f'{name}.jpg').convert()
-        self.display.blit(board, (0, 0))
+    def render(self, name, x, y):
+        image = pygame.image.load(f'{name}.jpg').convert()
+        self.display.blit(image, (x, y))
+    def render_png(self, name, x, y):
+        image = pygame.image.load(f'{name}.png').convert()
+        self.display.blit(image, (x, y))
