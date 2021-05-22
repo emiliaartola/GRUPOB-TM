@@ -1,5 +1,6 @@
 import pygame, random, time
 
+
 # Inicializacion del modulo
 pygame.init()
 
