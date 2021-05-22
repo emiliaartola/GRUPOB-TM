@@ -46,9 +46,6 @@ class Game:
                     self.DOWN_KEY = True
                 if event.key == pygame.K_UP:
                     self.UP_KEY = True
-                if event.key == pygame.K_ESCAPE:
-                    self.running, self.playing = False, False
-                    self.curr_menu.run_display = False
     def reset_keys(self):
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
     def draw_text(self, text, size, x, y , color):
