@@ -1,9 +1,10 @@
-class PlayerClass:
+class Player:
 
-    def __init__(self, player):
-        player.name = ''  #Personaje que le toca
-        player.lives = 10
-        player.energy = 0
-        player.victoryPoints = 0
-        player.cards = []
-        player.position = int
+    def __init__(self):
+        self.name = ''  #Personaje que le toca
+        self.lives = 10
+        self.energy = 0
+        self.victoryPoints = 0
+        self.cards = []
+        self.position = int
+
