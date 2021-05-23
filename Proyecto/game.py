@@ -5,7 +5,7 @@ from dice import *
 class Game:
     def __init__(self):
         pygame.init()
-        #El juego puede estar abierto o no, y el jeugo puede estar abierto pero capaz no estan jugando.
+        #El juego puede estar abierto o no, y el juego puede estar abierto pero capaz no estan jugando.
         self.running, self.playing = True, False
         #Los controles empiezan en False PORQUE EL JUGADOR TODAVIA NO TOCO NINGUNA TECLA
         self.UP_KEY, self.DOWN_KEY, self.START_KEY, self.BACK_KEY = False, False, False, False
@@ -21,6 +21,7 @@ class Game:
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.curr_menu = self.main_menu
+
  #Bucle del juego
     def game_loop(self):
         while self.playing:
@@ -31,6 +32,7 @@ class Game:
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
+
  #Traer los datos de lo que hace el jugador
     def check_events(self):
         for event in pygame.event.get():
@@ -59,6 +61,7 @@ class Game:
         text_rect = text_surface.get_rect()
         text_rect.center = (x,y)
         self.display.blit(text_surface,text_rect)
+
     #CAMBIO DE BACKGROUND
     def render(self, name, x, y):
         image = pygame.image.load(f'Recursos/{name}.jpg').convert()
