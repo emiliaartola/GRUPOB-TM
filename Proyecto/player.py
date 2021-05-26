@@ -13,3 +13,5 @@ class Player:
         self.player_number = player_number
     def __repr__(self):
         return self.name
+    def sayHi(self):
+        print("HIIIIIII")
