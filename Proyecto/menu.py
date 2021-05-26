@@ -1,7 +1,7 @@
 import pygame
 
 
-class Menu():
+class Menu:
     def __init__(self, game):
         # Obtener variables y atributos de la clase Game
         self.game = game
@@ -131,7 +131,7 @@ class CreditsMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.render("credits")
+            self.game.render("credits", 0, 0)
             self.game.draw_text('Version digital de King of Tokyo', 35, self.game.DISPLAY_W / 2,
                                 self.game.DISPLAY_H / 2 - 20, self.game.BLACK)
             self.game.draw_text('Desarrollado por : ', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50,
@@ -143,3 +143,57 @@ class CreditsMenu(Menu):
             self.game.draw_text('Carla Piriz', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 240,
                                 self.game.BLACK)
             self.blit_screen()
+class Selection():
+    def __init__(self, game):
+        self.game= game
+        self.state = "2"
+        self.number2x, self.number2y = self.game.DISPLAY_W/2 - 200, self.game.DISPLAY_H / 2,
+        self.number3x, self.number3y = self.game.DISPLAY_W/2 - 50, self.game.DISPLAY_H / 2,
+        self.number4x, self.number4y = self.game.DISPLAY_W/2 + 100, self.game.DISPLAY_H / 2,
+
+
+    def display_menu(self):
+        self.run_display = True
+        while self.run_display:
+            self.game.check_events()
+            self.game.render("Select", 0, 0)
+            #movement= pygame.mouse.get_pos()
+            #print(movement)
+            self.game.draw_text('Numero de jugadores : ', 45, self.game.DISPLAY_W / 2 + 20, self.game.DISPLAY_H / 3, self.game.BLACK)
+            self.game.draw_button('2', 40, self.number2x, self.number2y, 100, 100, self.game.BLACK, self.game.ORANGE)
+            self.boton1 = pygame.Rect(self.number2x, self.number2y, 100, 100)
+            self.game.draw_button('3', 40, self.number3x, self.number3y, 100, 100, self.game.BLACK, self.game.ORANGE)
+            self.boton2 = pygame.Rect(self.number3x, self.number3y, 100, 100)
+            self.game.draw_button('4', 40, self.number4x, self.number4y, 100, 100, self.game.BLACK, self.game.ORANGE)
+            self.boton3 = pygame.Rect(self.number4x,self.number4y, 100, 100)
+            self.game.window.blit(self.game.display, (0, 0))
+            pygame.display.update()
+            self.check_input()
+            self.game.reset_keys()
+    #Ubicar el puntero
+    #def move_cursor(self):
+    #Para saber que hace click en el boton y se active
+    def check_input (self):
+        for event in pygame.event.get():
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = pygame.mouse.get_pos()
+                if self.boton1.collidepoint(mouse_pos):
+                    self.number_of_players = 2
+                if self.boton2.collidepoint(mouse_pos):
+                    self.number_of_players = 3
+                if self.boton3.collidepoint(mouse_pos):
+                    self.number_of_players = 4
+                print("La cantidad de jugadores es: " + str(self.number_of_players))
+            if event.type == pygame.QUIT:
+                self.game.running, self.game.playing = False, False
+                self.game.curr_menu.run_display = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.game.running, self.game.playing = False, False
+                    self.game.curr_menu.run_display = False
+                if event.key == pygame.K_BACKSPACE:
+                    self.run_display = False
+                    self.game.curr_menu = self.game.main_menu
+                    self.game.curr_menu.display_menu()
+                    self.game.playing = False
+                    self.game.reset_keys()
