@@ -1,4 +1,4 @@
-from player import *
+from player_selection import *
 import pygame
 from menu import *
 from dice import *
@@ -22,6 +22,7 @@ class Game:
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.select_character = Selection(self)
+        self.create_player = CreatePlayers(self)
         self.curr_menu = self.main_menu
  #Bucle del juego
     def game_loop(self):
