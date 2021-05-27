@@ -1,7 +1,8 @@
-from player_selection import *
+
 import pygame
 from menu import *
 from dice import *
+from player_selection import Selection,CreatePlayers 
 
 class Game:
     def __init__(self):
