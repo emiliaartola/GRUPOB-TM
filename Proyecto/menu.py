@@ -1,6 +1,5 @@
 import pygame
 
-
 class Menu():
     def __init__(self, game):
         # Obtener variables y atributos de la clase Game
