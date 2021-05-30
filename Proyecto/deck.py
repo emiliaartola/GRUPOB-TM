@@ -13,17 +13,20 @@ class Deck:
         random.shuffle(self.cards)
 
     def draw(self):
-        draw_card = self.cards[0]
-        self.cards.pop(0)
-        return draw_card
+        if len(self.cards) > 0:
+            draw_card = self.cards[0]
+            self.cards.pop(0)
+            return draw_card
+        else:
+            return None
 
-    def show_cards_console(self, cards):
-        if(len(cards)>0):
+    def show_cards_console(self, cards_to_show):
+        if len(cards_to_show)>0:
             print("#", "\t", "ID", "\t", "Price", "\t", "Description")
 
-            for i in range(len(cards)):
-                print(str(i + 1).zfill(2), "\t", str(cards[i].id).zfill(2), "\t",
-                      cards[i].price, "\t\t", cards[i].description)
+            for i in range(len(cards_to_show)):
+                print(str(i + 1).zfill(2), "\t", str(cards_to_show[i].id).zfill(2), "\t",
+                      cards_to_show[i].price, "\t\t", cards_to_show[i].description)
 
     def show_all_cards_console(self):
         self.show_cards_console(self.cards)

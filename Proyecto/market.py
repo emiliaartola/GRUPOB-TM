@@ -2,12 +2,11 @@ from deck import Deck
 
 
 class Market:
-    deck = Deck()
     marketCards = []
 
     def __init__(self):
         # probando la lógica de la baraja del mercado en consola
-
+        self.deck = Deck()
         self.show_market_state()
         self.prepare_market(3)
 
@@ -18,7 +17,6 @@ class Market:
         print("cartas en el mazo: ", len(self.deck.cards))
         print(" ")
 
-
     def buy_card(self, card):
         print("__ COMPRA_ _")
         print("Se compra la carta: #", card.id)
@@ -26,7 +24,9 @@ class Market:
 
         index = self.marketCards.index(card)
         self.marketCards.remove(card)
-        self.marketCards.insert(index, self.deck.draw())
+        new_card = self.deck.draw()
+        if new_card:
+            self.marketCards.insert(index, new_card)
 
         self.show_market_state()
 
@@ -34,14 +34,14 @@ class Market:
         print("__ PREPARANDO CARTAS __")
         print("Se reparten ", market_size, " cartas")
         print(" ")
-
+        self.deck = Deck()
+        self.marketCards.clear()
         for i in range(market_size):
             self.marketCards.append(self.deck.draw())
 
         self.show_market_state()
 
-
-market = Market()
-market.buy_card(market.marketCards[0])
-market.buy_card(market.marketCards[1])
-market.buy_card(market.marketCards[2])
+# market = Market()
+# market.buy_card(market.marketCards[0])
+# market.buy_card(market.marketCards[1])
+# market.buy_card(market.marketCards[2])
