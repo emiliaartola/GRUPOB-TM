@@ -23,8 +23,8 @@ class Card:
 
             Card(4, 'Muerte y recompensa', 'Si alguien muere ganas 3 puntos de victoria', ''),
             Card(8, 'Victoria', 'Ganas 3 puntos de victoria inmediatamente', ''),
-            Card(5, 'Victoria','Ganás 2 puntos de victoria y entrás en Tokyo ', ''),
-            Card(2, 'Victoria','Ganas 1 punto de victoria', ''),
+            Card(5, 'Victoria', 'Ganás 2 puntos de victoria y entrás en Tokyo ', ''),
+            Card(2, 'Victoria', 'Ganas 1 punto de victoria', ''),
 
             Card(4, 'Daño', 'Le haces 2 de daño a tus oponentes', ''),
             Card(9, 'Fatality', 'le infliges 5 de daño a un oponente a elección', ''),
@@ -33,8 +33,8 @@ class Card:
 
             Card(6, 'Energía', 'Ganas 1 de energía adicional cada ronda', ''),
             Card(4, 'Energía', 'Compras 6 energías', ''),
-            Card(8, '', 'Expulsas al mounstruo que se encuentre en tokyo', ''),
-            Card(8, '', 'c12', ''),
+            Card(8, 'Name', 'Expulsas al mounstruo que se encuentre en tokyo', ''),
+            Card(8, 'Name', 'c12', ''),
             Card(4, 'M', 'c13', ''),
             Card(4, 'M', 'c14', ''),
             Card(4, 'M', 'c15', ''),
