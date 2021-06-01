@@ -33,15 +33,9 @@ class CardUI:
         self.rect_ui = pygame.draw.rect(screen_ref, self.background_color_description, rectDescriptionContainer,
                                         border_radius=marginContainer)
 
-        #title_label = constant.FONTS.TITLE_FONT.render(self.title, True, self.title_color)
-        #screen_ref.blit(title_label, self.pos)
         drawText(screen_ref, self.title, constant.COLORS.BLACK, rectTitle, constant.FONTS.TITLE_FONT)
-
-        #description_label = constant.FONTS.NORMAL_FONT.render(self.description, True, self.title_color)
-        #screen_ref.blit(description_label, (self.pos[0], self.pos[1] + 50))
-
         drawText(screen_ref, self.description, constant.COLORS.BLACK, rectDescription, constant.FONTS.NORMAL_FONT)
-        drawText(screen_ref, str(self.price), constant.COLORS.GREEN, rectPrice, constant.FONTS.SUBTITLE_FONT)
+        drawText(screen_ref, str(self.price), constant.COLORS.BLUE, rectPrice, constant.FONTS.SUBTITLE_FONT)
 
     def check_collider(self, point):
         return self.rect_ui.collidepoint(point)
@@ -59,19 +53,19 @@ menuActive = True
 
 pygame.display.flip()
 
-quit_button_size = (150, 40)
-quit_button_pos = (0, 25)
-quit_button_rect = (quit_button_pos[0], quit_button_pos[1], quit_button_size[0], quit_button_size[1])
-quit_button = pygame.draw.rect(screen, (255, 0, 0), quit_button_rect)
-quit_label = constant.FONTS.NORMAL_FONT.render('Reiniciar Mercado', True, constant.COLORS.WHITE)
-screen.blit(quit_label, quit_button_pos)
+restart_button_size = (155, 45)
+restart_button_pos = (35, 45)
+restart_button_pos2 = (40, 60)
+restart_button_rect = (restart_button_pos[0], restart_button_pos[1], restart_button_size[0], restart_button_size[1])
+restart_button = pygame.draw.rect(screen, (255, 0, 0), restart_button_rect, border_radius=5)
+restart_label = constant.FONTS.NORMAL_FONT.render('Reiniciar Mercado', True, constant.COLORS.WHITE)
+screen.blit(restart_label, restart_button_pos2)
 
 market = Market()
 card_ui_list = []
 
 
 def draw_market():
-    print("drawing market")
     card_ui_list.clear()
     pygame.draw.rect(screen, constant.COLORS.BLACK, (0, 120, 800, 600))
     for i in range(len(market.marketCards)):
@@ -82,28 +76,26 @@ def draw_market():
     pygame.display.update()
 
 
-# draw some text into an area of a surface
-# automatically wraps words
-# returns any text that didn't get blitted
+# para acomodar el texto dentro de cada carta
 def drawText(surface, text, color, rect, font, aa=True, bkg=None):
     rect = pygame.Rect(rect)
     y = rect.top
     lineSpacing = -2
 
-    # get the height of the font
+    # altura de la fuente
     fontHeight = font.size("Tg")[1]
 
     while text:
         i = 1
-        # determine if the row of text will be outside our area
+        # determina si la fila está fuera del área
         if y + fontHeight > rect.bottom:
             break
 
-        # determine maximum width of line
+        # determina el ancho maximo de la linea
         while font.size(text[:i])[0] < rect.width and i < len(text):
             i += 1
 
-        # if we've wrapped the text, then adjust the wrap to the last word
+        # ajustar el texto a la ultima palabra
         if i < len(text):
             i = text.rfind(" ", 0, i) + 1
 
@@ -117,7 +109,7 @@ def drawText(surface, text, color, rect, font, aa=True, bkg=None):
         surface.blit(image, (rect.left, y))
         y += fontHeight + lineSpacing
 
-        # remove the text we just blitted
+        # elimina el texto que borramos
         text = text[i:]
 
     return text
@@ -129,13 +121,13 @@ draw_market()
 while menuActive:
 
     for event in pygame.event.get():
-        # print(event)
+
         if event.type == pygame.QUIT:
             pygame.quit()
             menuActive = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             mouse_pos = pygame.mouse.get_pos()
-            if quit_button.collidepoint(mouse_pos):
+            if restart_button.collidepoint(mouse_pos):
                 market.prepare_market(3)
                 draw_market()
             for card_ui in card_ui_list:

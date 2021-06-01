@@ -14,12 +14,12 @@ class Market:
         print("__ ESTADO DEL MERCADO __")
         print("Cartas del mercado:", len(self.marketCards))
         self.deck.show_cards_console(self.marketCards)
-        print("cartas en el mazo: ", len(self.deck.cards))
+        print("Cartas en el mazo: ", len(self.deck.cards))
         print(" ")
 
     def buy_card(self, card):
         print("__ COMPRA_ _")
-        print("Se compra la carta: #", card.id)
+        print("Se compra la carta: #", card.id, card.description)
         print(" ")
 
         index = self.marketCards.index(card)

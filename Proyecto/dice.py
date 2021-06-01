@@ -2,6 +2,7 @@ import pygame, random, time
 from menu import *
 from game import *
 
+
 class Dice:
     def __init__(self, game):
         self.game = game

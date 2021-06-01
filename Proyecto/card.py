@@ -34,7 +34,7 @@ class Card:
             Card(6, 'Energía', 'Ganas 1 de energía adicional cada ronda', ''),
             Card(4, 'Energía', 'Compras 6 energías', ''),
             Card(8, 'Name', 'Expulsas al mounstruo que se encuentre en tokyo', ''),
-            Card(8, 'Name', 'c12', ''),
+            Card(3, 'Name', 'c12', ''),
             Card(4, 'M', 'c13', ''),
             Card(4, 'M', 'c14', ''),
             Card(4, 'M', 'c15', ''),
