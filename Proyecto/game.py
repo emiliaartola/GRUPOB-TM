@@ -69,3 +69,4 @@ class Game:
     def render_png(self, name, x, y):
         image = pygame.image.load(f'Recursos/{name}.png').convert()
         self.display.blit(image, (x, y))
+

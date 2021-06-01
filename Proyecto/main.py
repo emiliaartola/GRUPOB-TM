@@ -8,13 +8,12 @@ pygame.init()
 pantalla = pygame.display.set_mode((1100, 800))
 
 # Titulo y icono
-
 pygame.display.set_caption("King of Tokyo")
-icono = pygame.image.load('TokyioIcon.jpg')
+icono = pygame.image.load("Recursos/TokyioIcon.jpg")
 pygame.display.set_icon(icono)
 
 # Tablero
-tableroimg = pygame.image.load('Tablero.jpg')
+tableroimg = pygame.image.load('Recursos/Tablero.jpg')
 
 
 def tablero():
@@ -28,7 +27,7 @@ cara_png = []
 global ultimoroll
 ultimoroll = 0
 for i in range(1, cara + 1):
-    cara_png.append(pygame.image.load('Cara' + str(i) + '.png'))
+    cara_png.append(pygame.image.load('Recursos/Cara' + str(i) + '.png'))
 
 
 def rolldados():
