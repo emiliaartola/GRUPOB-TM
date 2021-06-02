@@ -120,3 +120,4 @@ venv.bak/
 # Rope project settings
 .ropeproject
 Proyecto/.idea/
+.idea/
