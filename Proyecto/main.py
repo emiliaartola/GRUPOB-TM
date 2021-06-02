@@ -77,3 +77,4 @@ while bandera:
     tablero()
 
     pygame.display.update()
+

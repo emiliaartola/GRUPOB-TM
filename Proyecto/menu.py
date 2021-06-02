@@ -1,5 +1,6 @@
 import pygame
 
+
 class Menu():
     def __init__(self, game):
         # Obtener variables y atributos de la clase Game
@@ -130,15 +131,15 @@ class CreditsMenu(Menu):
             if self.game.START_KEY or self.game.BACK_KEY:
                 self.game.curr_menu = self.game.main_menu
                 self.run_display = False
-            self.game.render("credits")
+            self.game.render("credits", 0, 0)
             self.game.draw_text('Version digital de King of Tokyo', 35, self.game.DISPLAY_W / 2,
                                 self.game.DISPLAY_H / 2 - 20, self.game.BLACK)
             self.game.draw_text('Desarrollado por : ', 30, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 50,
                                 self.game.BLACK)
-            self.game.draw_text('Emilia Artola', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 110,
+            self.game.draw_text('Carla Piriz', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 110,
                                 self.game.BLACK)
-            self.game.draw_text('Franco Gozalvez', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 170,
+            self.game.draw_text('Emilia Artola', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 170,
                                 self.game.BLACK)
-            self.game.draw_text('Carla Piriz', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 240,
+            self.game.draw_text('Franco Gozalvez', 40, self.game.DISPLAY_W / 2, self.game.DISPLAY_H / 2 + 240,
                                 self.game.BLACK)
             self.blit_screen()
