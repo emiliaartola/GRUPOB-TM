@@ -134,7 +134,3 @@ while menuActive:
                 if card_ui.check_collider(mouse_pos):
                     card_ui.click()
                     draw_market()
-
-
-
-
