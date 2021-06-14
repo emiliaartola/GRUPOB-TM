@@ -1,4 +1,4 @@
-from player import *
+from player_selection import *
 import pygame
 from menu import *
 from dice import *
@@ -22,6 +22,7 @@ class Game:
         self.options = OptionsMenu(self)
         self.credits = CreditsMenu(self)
         self.select_character = Selection(self)
+        self.create_player = CreatePlayers(self)
         self.curr_menu = self.main_menu
  #Bucle del juego
     def game_loop(self):
@@ -29,7 +30,9 @@ class Game:
             self.curr_menu = self.select_character
             self.curr_menu.display_menu()
             self.check_events()
-            self.render("background", 0, 0)
+            #self.render("background", 0, 0)
+            #self.render("Tablero", 150, 150)
+            #self.render_png('Cara1', 300, 300)
             self.window.blit(self.display, (0,0))
             pygame.display.update()
             self.reset_keys()
@@ -68,17 +71,16 @@ class Game:
     def render_png(self, name, x, y):
         image = pygame.image.load(f'Recursos/{name}.png').convert()
         self.display.blit(image, (x, y))
-    def draw_button(self, text,font_size, x, y, width, height, color, hover):
-        mouse = pygame.mouse.get_pos()
+    def draw_button(self, text,font_size, x, y, width, height, color, hover ):
+        mouse= pygame.mouse.get_pos()
         if x+width > mouse [0] > x and y+height > mouse [1] > y:
             pygame.draw.rect (self.display, hover, (x,y,width,height))
         else:
-            pygame.draw.rect (self.display, color, (x, y, width, height))
+            pygame.draw.rect (self.display, color, (x,y,width,height))
         font = pygame.font.Font(self.font_name,font_size)
         text_surface = font.render(text, True, self.WHITE)
         textRect = text_surface.get_rect()
         # se centra en la X primero
         textRect.center = (( x +(width/2)), (y+(height/2)))
         self.display.blit(text_surface, textRect)
-    def draw_board(self, text, font_size,x, y , ):
-        pass
+        
