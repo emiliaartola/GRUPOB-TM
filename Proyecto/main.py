@@ -1,6 +1,10 @@
-import pygame, random, time
+import random, time
+from player import *
 
-playercount = input("Poné la cantidad de jugadores: ")
+playercount = int(input("Poné la cantidad de jugadores: "))
+jugadornumero = []
+for i in range(playercount + 1):
+    jugadornumero.append(Player(i))
 # Inicializacion del modulo
 pygame.init()
 font = pygame.font.Font("Japanese Robot.ttf", 20)
@@ -47,6 +51,10 @@ ultimoroll3 = random.randint(0, 5)
 for i in range(1, cara + 1):
     cara_png.append(pygame.image.load('Cara' + str(i) + '.png'))
 
+turnojugador = 1
+
+
+
 
 def rolldados():
     global ultimoroll
@@ -91,26 +99,33 @@ def rolldados3():
         ultimoroll3 = temp
         pygame.display.update()
         check = temp
+
+def turnos():
+    pass
+
 player_img = []
-for i in range(0,4):
-    tempimg = pygame.image.load("carta"+str(i)+".png").convert_alpha()
-    w , h = tempimg.get_size()
-    tempimg = pygame.transform.smoothscale(tempimg,(int(w/4),int(h/4)))
+for i in range(0, 4):
+    tempimg = pygame.image.load("carta" + str(i) + ".png").convert_alpha()
+    w, h = tempimg.get_size()
+    tempimg = pygame.transform.smoothscale(tempimg, (int(w / 4), int(h / 4)))
     player_img.append(tempimg)
+
 def pantalla_printall(playernumber):
-    vida = 10
-    pvictoria = 0
-    energia = 10
+    jugador = jugadornumero[playernumber]
+    vida = jugador.lives
+    pvictoria = jugador.victoryPoints
+    energia = jugador.energy
     posicionesgrals = [(75, 100), (75, 500), (1325, 100), (1325, 500)]
     vidatext = font.render(str(vida), True, rojo)
     pvictext = font.render(str(pvictoria), True, azul)
     energtext = font.render(str(energia), True, amarillo)
     pantalla.blit(player_img[playernumber], (posicionesgrals[playernumber][0], posicionesgrals[playernumber][1]))
-    pantalla.blit(vidatext, (posicionesgrals[playernumber][0] + 100/4, posicionesgrals[playernumber][1] + 1255/4))
-    pantalla.blit(energtext, (posicionesgrals[playernumber][0] + 660/4, posicionesgrals[playernumber][1] + 1255/4))
-    pantalla.blit(pvictext, (posicionesgrals[playernumber][0] + 115/4, posicionesgrals[playernumber][1] + 148/4))
+    pantalla.blit(vidatext, (posicionesgrals[playernumber][0] + 100 / 4, posicionesgrals[playernumber][1] + 1255 / 4))
+    pantalla.blit(energtext, (posicionesgrals[playernumber][0] + 660 / 4, posicionesgrals[playernumber][1] + 1255 / 4))
+    pantalla.blit(pvictext, (posicionesgrals[playernumber][0] + 115 / 4, posicionesgrals[playernumber][1] + 148 / 4))
 
-def jugador():
+
+def printearcartas():
     if int(playercount) == 2:
         pantalla_printall(0)
         pantalla_printall(2)
@@ -142,7 +157,7 @@ while bandera:
 
     for event in pygame.event.get():
         pantalla.blit(botonreal_png, (botonreal))
-        jugador()
+        printearcartas()
         pantalla.blit(cara_png[ultimoroll - 1], (boton))
         pantalla.blit(cara_png[ultimoroll2 - 1], (boton2))
         pantalla.blit(cara_png[ultimoroll3 - 1], (boton3))
@@ -160,7 +175,7 @@ while bandera:
             rolldados2()
             rolldados3()
     tablero()
-    jugador()
+    printearcartas()
     pantalla.blit(botonreal_png, (botonreal))
     pantalla.blit(cara_png[ultimoroll - 1], (boton))
     pantalla.blit(cara_png[ultimoroll2 - 1], (boton2))
