@@ -1,4 +1,4 @@
-import pygame
+import pygame, time
 import game
 import player
 from menu import *
@@ -123,19 +123,20 @@ class CreatePlayers(PlayerSelection):
                                 self.mid_h - 200, self.game.BLACK)
             monstruo1.draw(self.display)
             if monstruo1.clicked is True:
-                self.game.draw_text('x', 150, self.sel1x + 77, self.sel1y + 82, self.game.ORANGE)
+                self.game.draw_text(f'P{Button.Counting}', 120, self.sel1x + 77, self.sel1y + 82, self.game.ORANGE)
             monstruo2.draw(self.display)
             if monstruo2.clicked is True:
-                self.game.draw_text('x', 150, self.sel2x + 77, self.sel2y + 82, self.game.ORANGE)
+                self.game.draw_text(f'P{Button.Counting}', 120, self.sel2x + 77, self.sel2y + 82, self.game.ORANGE)
+                
             monstruo3.draw(self.display)
             if monstruo3.clicked is True:
-                self.game.draw_text('x', 150, self.sel3x + 77, self.sel3y + 82, self.game.ORANGE)
+                self.game.draw_text(f'P{Button.Counting}', 120, self.sel3x + 77, self.sel3y + 82, self.game.ORANGE)
             monstruo4.draw(self.display)
             if monstruo4.clicked is True:
-                self.game.draw_text('x', 150, self.sel4x + 77, self.sel4y + 82, self.game.ORANGE)
+                self.game.draw_text(f'P{Button.Counting}', 120, self.sel4x + 77, self.sel4y + 82, self.game.ORANGE)
             monstruo5.draw(self.display)
             if monstruo5.clicked is True:
-                self.game.draw_text('x', 150, self.sel5x + 77, self.sel5y + 82, self.game.ORANGE)
+                self.game.draw_text(f'P{Button.Counting}', 120, self.sel5x + 77, self.sel5y + 82, self.game.ORANGE)
             self.blit_screen()
             self.list_in_players()
             self.check_input()
@@ -160,24 +161,25 @@ class CreatePlayers(PlayerSelection):
 
     def list_in_players(self):
         if game.Game.number_of_players == Button.Counting:
-            for monster in Button.list:
-                if monster == 1:
-                    p1 = Player(monster, 'Player 1', Button.list[0])
-                    self.players.append(p1)
-                if monster == 2:
-                    p2 = Player(monster, 'Player 2', Button.list[1])
-                    self.players.append(p2)
-                if monster == 3:
-                    p3 = player.Player(monster, 'Player 3', Button.list[2])
-                    self.players.append(p3)
-                if monster == 4:
-                    p4 = Player(monster, 'Player 4', Button.list[3])
-                    self.players.append(p4)
-            # ACA SE SALE CUANDO TERMINAN DE ELEGIR LOS MONSTRUOS
-            #self.run_display = False
-            #game.Game.number_of_players = 0
-            #Button.list.clear()
-            #Button.Counting = 0
+            for number, monster in enumerate(Button.list):
+                    if number == 0:
+                        p1 = Player(number, 'Player 1', monster)
+                        self.players.append(p1)
+                        print(p1)
+                        print('ACAAA')
+                    if number == 1:
+                        p2 = Player(number, 'Player 2', monster)
+                        self.players.append(p2)
+                    if number == 3:
+                        p3 = player.Player(number, 'Player 3', monster)
+                        self.players.append(p3)
+                    if number == 4:
+                        p4 = Player(number, 'Player 4', Button.monster)
+                        self.players.append(p4)
+            self.run_display = False
+            print(self.players)
+            self.game.curr_menu = self.game.board
+            self.game.curr_menu.display_menu()
 
 
 class Button():

@@ -19,6 +19,9 @@ class Board:
         self.game = game
         self.display = self.game.display
         self.window = self.game.window
+    def display_menu(self):
         self.run_display = True
-    def display_board(self):
-        self.game.render("credits", 0, 0)
+        while self.run_display:
+            self.game.render('preparando', 0, 0)
+            self.game.window.blit(self.game.display, (0, 0))
+            pygame.display.update()
