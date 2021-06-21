@@ -1,6 +1,6 @@
 import pygame
 from menu import *
-from dice import Board
+from dice import Dice, Board
 from player_selection import Selection, CreatePlayers
 from player import Player
 
@@ -17,7 +17,7 @@ class Game:
         self.DISPLAY_W, self.DISPLAY_H = 720, 740
         self.display = pygame.Surface((self.DISPLAY_W, self.DISPLAY_H))
         self.window = pygame.display.set_mode((self.DISPLAY_W, self.DISPLAY_H))
-        self.font_name = 'Japanese Robot.ttf'
+        self.font_name = 'Recursos/Japanese Robot.ttf'
         pygame.display.set_caption("King of Tokyo")
         self.icono = pygame.image.load('Recursos/TokyioIcon.jpg')
         pygame.display.set_icon(self.icono)
