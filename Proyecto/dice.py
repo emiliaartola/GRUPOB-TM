@@ -85,6 +85,7 @@ class Board(Dice):
         self.boton2 = pygame.Rect(815, 835, 63, 65)
         self.boton3 = pygame.Rect(915, 835, 63, 65)
         self.font = pygame.font.Font("Recursos/Japanese Robot.ttf", 20)
+        rolling = False
         while self.run_display:
             self.display = pygame.display.set_mode((self.X, self.Y))
             self.tablero()
@@ -96,25 +97,31 @@ class Board(Dice):
                 self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
                 self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
                 self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
+
                 if event.type == pygame.QUIT:
-                    bandera = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
-                if self.botonreal.collidepoint(mouse_pos):
-                    self.tablero()
-                    self.display.blit(self.botonreal_png, (self.botonreal))
-                    self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
-                    self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
-                    self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
-                    self.rolldados()
-                    self.rolldados2()
-                    self.rolldados3()
+                    pygame.quit()
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    mouse_pos = pygame.mouse.get_pos()
+                    if self.botonreal.collidepoint(mouse_pos) and not rolling:
+                        self.tablero()
+                        self.display.blit(self.botonreal_png, (self.botonreal))
+                        self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
+                        self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
+                        self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
+                        rolling = True
+                        self.rolldados()
+                        self.rolldados2()
+                        self.rolldados3()
+
+            rolling = False
             self.tablero()
             self.printearcartas()
             self.display.blit(self.botonreal_png, (self.botonreal))
             self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
             self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
             self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
+
+            self.buttonMarket()
             pygame.display.update()
     def show_monster(self): 
         for i in range(0, 4):
@@ -148,3 +155,6 @@ class Board(Dice):
             self.pantalla_printall(1)
             self.pantalla_printall(2)
             self.pantalla_printall(3)
+    def buttonMarket(self):
+        buttonRect = pygame.Rect(615, 835, 63, 65)
+        #rect_ui = pygame.draw.rect(self.display, self.background_color, buttonRect, border_radius=10)
