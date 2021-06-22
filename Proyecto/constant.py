@@ -5,7 +5,7 @@ pygame.init()
 
 #
 class FONTS:
-    FONT_FILE = 'Japanese Robot.ttf'
+    FONT_FILE = 'Recursos/Japanese Robot.ttf'
     TITLE_FONT = pygame.font.SysFont(FONT_FILE, 48)
     SUBTITLE_FONT = pygame.font.SysFont(FONT_FILE, 36)
     NORMAL_FONT = pygame.font.SysFont(FONT_FILE, 24)

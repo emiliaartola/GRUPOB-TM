@@ -41,7 +41,7 @@ class Market:
 
         self.show_market_state()
 
-# market = Market()
-# market.buy_card(market.marketCards[0])
-# market.buy_card(market.marketCards[1])
-# market.buy_card(market.marketCards[2])
+#market = Market()
+#market.buy_card(market.marketCards[0])
+#market.buy_card(market.marketCards[1])
+#market.buy_card(market.marketCards[2])
