@@ -3,9 +3,6 @@ import game
 import player
 from menu import *
 from player import *
-import dice
-
-
 class PlayerSelection:
     players = []
     
@@ -58,6 +55,7 @@ class Selection(PlayerSelection):
             if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
 
                 mouse_pos = pygame.mouse.get_pos()
+                # Selecciona el numero de jugadores
                 # depende el numero los mando a elegir el monstruo
                 if self.boton1.collidepoint(mouse_pos):
                     game.Game.number_of_players = 2
@@ -105,11 +103,11 @@ class CreatePlayers(PlayerSelection):
 
     def display_menu(self):
 
-        self.m1 = self.load_monster_img('penguin1')
-        self.m2 = self.load_monster_img('kitty')
-        self.m3 = self.load_monster_img('alien')
-        self.m4 = self.load_monster_img('theKing')
-        self.m5 = self.load_monster_img('dragon')
+        self.m1 = self.load_monster_img('carta3')
+        self.m2 = self.load_monster_img('carta0')
+        self.m3 = self.load_monster_img('carta4')
+        self.m4 = self.load_monster_img('carta2')
+        self.m5 = self.load_monster_img('carta1')
         monstruo1 = Button(self.sel1x, self.sel1y, self.m1, 1, "Pinguino")
         monstruo2 = Button(self.sel2x, self.sel2y, self.m2, 1, "Kitty")
         monstruo3 = Button(self.sel3x, self.sel3y, self.m3, 1, "Alien")
@@ -125,19 +123,24 @@ class CreatePlayers(PlayerSelection):
                                 self.mid_h - 200, self.game.BLACK)
             monstruo1.draw(self.display)
             if monstruo1.clicked is True:
-                self.game.draw_text('X', 120, self.sel1x + 77, self.sel1y + 82, self.game.WHITE)
+                self.game.draw_text('X', 120, self.sel1x + 77, self.sel1y + 82, self.game.ORANGE)
+                
             monstruo2.draw(self.display)
             if monstruo2.clicked is True:
-                self.game.draw_text('X', 120, self.sel2x + 77, self.sel2y + 82, self.game.WHITE)   
+                self.game.draw_text('X', 120, self.sel2x + 77, self.sel2y + 82, self.game.ORANGE)
+                
             monstruo3.draw(self.display)
             if monstruo3.clicked is True:
-                self.game.draw_text('X', 120, self.sel3x + 77, self.sel3y + 82, self.game.WHITE)
+                self.game.draw_text('X', 120, self.sel3x + 77, self.sel3y + 82, self.game.ORANGE)
+                
             monstruo4.draw(self.display)
             if monstruo4.clicked is True:
-                self.game.draw_text('X', 120, self.sel4x + 77, self.sel4y + 82, self.game.WHITE)
+                self.game.draw_text('X', 120, self.sel4x + 77, self.sel4y + 82, self.game.ORANGE)
+                
             monstruo5.draw(self.display)
             if monstruo5.clicked is True:
-                self.game.draw_text('X', 120, self.sel5x + 77, self.sel5y + 82, self.game.WHITE)
+                self.game.draw_text('X', 120, self.sel5x + 77, self.sel5y + 82, self.game.ORANGE)
+                
             self.blit_screen()
             self.list_in_players()
             self.check_input()
@@ -159,7 +162,7 @@ class CreatePlayers(PlayerSelection):
                     self.game.curr_menu.display_menu()
                     self.run_display = False
                     self.game.reset_keys()
-
+##Crea los players segun la cantidad de jugadores
     def list_in_players(self):
         if game.Game.number_of_players == Button.Counting:
             for number, monster in enumerate(Button.list):
@@ -171,14 +174,15 @@ class CreatePlayers(PlayerSelection):
                     if number == 1:
                         p2 = Player(number, 'Player 2', monster)
                         self.players.append(p2)
-                    if number == 3:
+                    if number == 2:
                         p3 = player.Player(number, 'Player 3', monster)
                         self.players.append(p3)
-                    if number == 4:
-                        p4 = Player(number, 'Player 4', Button.monster)
+                    if number == 3:
+                        p4 = Player(number, 'Player 4', monster)
                         self.players.append(p4)
+            #Aqui cambia de pantalla
             self.run_display = False
-            print(p1)
+            print(self.players)
             self.game.curr_menu = self.game.board
             self.game.curr_menu.display_menu()
     def load_monster_img(self,monster):
@@ -223,6 +227,3 @@ class Button():
 
         # Dibuja el boton
         surface.blit(self.image, (self.rect.x, self.rect.y))
-
-# GUARDAR LOS MONSTRUOS EN UN OBJETO (Y CREAR OBJETO) DE CLASE PLAYER CUADNO SELECCIONAN MONSTRUO
-# PASAR AL BOARD CUANDO SE TERMINA DE ELEGIR

@@ -9,6 +9,5 @@ class Player:
         self.energy = 0
         self.victoryPoints = 0
         self.cards = []
-    def sayHi(self):
-        print("HIIIIIII")
+    
 
