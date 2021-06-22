@@ -8,7 +8,7 @@ import dice
 
 class PlayerSelection:
     players = []
-
+    
     def __init__(self, game):
         self.game = game
         self.display = self.game.display
@@ -105,14 +105,16 @@ class CreatePlayers(PlayerSelection):
 
     def display_menu(self):
 
-        self.m1 = pygame.image.load('Recursos/penguin.png').convert()
-        self.m1 = pygame.transform.scale(self.m1, (150, 150))
+        self.m1 = self.load_monster_img('penguin1')
+        self.m2 = self.load_monster_img('kitty')
+        self.m3 = self.load_monster_img('alien')
+        self.m4 = self.load_monster_img('theKing')
+        self.m5 = self.load_monster_img('dragon')
         monstruo1 = Button(self.sel1x, self.sel1y, self.m1, 1, "Pinguino")
-
-        monstruo2 = Button(self.sel2x, self.sel2y, self.m1, 1, "Kitty")
-        monstruo3 = Button(self.sel3x, self.sel3y, self.m1, 1, "Alien")
-        monstruo4 = Button(self.sel4x, self.sel4y, self.m1, 1, "The King")
-        monstruo5 = Button(self.sel5x, self.sel5y, self.m1, 1, "Dino")
+        monstruo2 = Button(self.sel2x, self.sel2y, self.m2, 1, "Kitty")
+        monstruo3 = Button(self.sel3x, self.sel3y, self.m3, 1, "Alien")
+        monstruo4 = Button(self.sel4x, self.sel4y, self.m4, 1, "The King")
+        monstruo5 = Button(self.sel5x, self.sel5y, self.m5, 1, "Dino")
         self.run_display = True
         while self.run_display:
 
@@ -123,20 +125,19 @@ class CreatePlayers(PlayerSelection):
                                 self.mid_h - 200, self.game.BLACK)
             monstruo1.draw(self.display)
             if monstruo1.clicked is True:
-                self.game.draw_text(f'P{Button.Counting}', 120, self.sel1x + 77, self.sel1y + 82, self.game.ORANGE)
+                self.game.draw_text('X', 120, self.sel1x + 77, self.sel1y + 82, self.game.WHITE)
             monstruo2.draw(self.display)
             if monstruo2.clicked is True:
-                self.game.draw_text(f'P{Button.Counting}', 120, self.sel2x + 77, self.sel2y + 82, self.game.ORANGE)
-                
+                self.game.draw_text('X', 120, self.sel2x + 77, self.sel2y + 82, self.game.WHITE)   
             monstruo3.draw(self.display)
             if monstruo3.clicked is True:
-                self.game.draw_text(f'P{Button.Counting}', 120, self.sel3x + 77, self.sel3y + 82, self.game.ORANGE)
+                self.game.draw_text('X', 120, self.sel3x + 77, self.sel3y + 82, self.game.WHITE)
             monstruo4.draw(self.display)
             if monstruo4.clicked is True:
-                self.game.draw_text(f'P{Button.Counting}', 120, self.sel4x + 77, self.sel4y + 82, self.game.ORANGE)
+                self.game.draw_text('X', 120, self.sel4x + 77, self.sel4y + 82, self.game.WHITE)
             monstruo5.draw(self.display)
             if monstruo5.clicked is True:
-                self.game.draw_text(f'P{Button.Counting}', 120, self.sel5x + 77, self.sel5y + 82, self.game.ORANGE)
+                self.game.draw_text('X', 120, self.sel5x + 77, self.sel5y + 82, self.game.WHITE)
             self.blit_screen()
             self.list_in_players()
             self.check_input()
@@ -177,9 +178,13 @@ class CreatePlayers(PlayerSelection):
                         p4 = Player(number, 'Player 4', Button.monster)
                         self.players.append(p4)
             self.run_display = False
-            print(self.players)
+            print(p1)
             self.game.curr_menu = self.game.board
             self.game.curr_menu.display_menu()
+    def load_monster_img(self,monster):
+        m = pygame.image.load(f'Recursos/{monster}.png').convert()
+        m = pygame.transform.scale(m, (150, 180))
+        return m
 
 
 class Button():
