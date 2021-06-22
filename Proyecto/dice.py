@@ -13,7 +13,7 @@ class Dice:
     ultimoroll2 = random.randint(0, 5)
     ultimoroll3 = random.randint(0, 5)
     for i in range(1, cara + 1):
-            cara_png.append(pygame.image.load(f'Recursos\Cara{i}.png'))
+            cara_png.append(pygame.image.load(f'Recursos/Cara{i}.png'))
     def __init__(self, game):
         self.game = game
         
@@ -73,7 +73,7 @@ class Board(Dice):
         self.amarillo = (227, 158, 31)
         self.azul = (30, 150, 249)
         self.X, self.Y = 1600, 1000
-        self.tableroimg = pygame.image.load('Recursos\Tokyo_Tablero2.png')
+        self.tableroimg = pygame.image.load('Recursos/Tokyo_Tablero2.png')
     def tablero(self):
         self.display.blit(self.tableroimg, (315, 17))
     #EJECUCION tablero    
