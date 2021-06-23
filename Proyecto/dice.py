@@ -1,4 +1,8 @@
+import os
+
 import pygame, random, time
+
+from cards_view import CardView
 from menu import *
 from game import *
 from player_selection import PlayerSelection
@@ -85,6 +89,8 @@ class Board(Dice):
         self.boton2 = pygame.Rect(815, 835, 63, 65)
         self.boton3 = pygame.Rect(915, 835, 63, 65)
         self.font = pygame.font.Font("Recursos/Japanese Robot.ttf", 20)
+        self.botonMarket = pygame.image.load("Recursos/MERCADO.png")
+        self.boton4 = pygame.Rect(1000, 100, self.botonMarket.get_width(), self.botonMarket.get_height())
         rolling = False
         while self.run_display:
             self.display = pygame.display.set_mode((self.X, self.Y))
@@ -97,6 +103,7 @@ class Board(Dice):
                 self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
                 self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
                 self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
+                self.display.blit(self.botonMarket, (self.boton4))
 
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -113,6 +120,10 @@ class Board(Dice):
                         self.rolldados2()
                         self.rolldados3()
 
+                    if self.boton4.collidepoint(mouse_pos):
+                        self.cardView = CardView()
+                        self.cardView.draw_card_view()
+
             rolling = False
             self.tablero()
             self.printearcartas()
@@ -120,8 +131,7 @@ class Board(Dice):
             self.display.blit(self.cara_png[ultimoroll - 1], (self.boton))
             self.display.blit(self.cara_png[ultimoroll2 - 1], (self.boton2))
             self.display.blit(self.cara_png[ultimoroll3 - 1], (self.boton3))
-
-            self.buttonMarket()
+            self.display.blit(self.botonMarket, (self.boton4))
             pygame.display.update()
     def show_monster(self): 
         for i in range(0, 4):
@@ -155,6 +165,3 @@ class Board(Dice):
             self.pantalla_printall(1)
             self.pantalla_printall(2)
             self.pantalla_printall(3)
-    def buttonMarket(self):
-        buttonRect = pygame.Rect(615, 835, 63, 65)
-        #rect_ui = pygame.draw.rect(self.display, self.background_color, buttonRect, border_radius=10)
